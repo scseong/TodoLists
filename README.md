@@ -1,14 +1,21 @@
 # To Do List
 
 ### 🚩 프로젝트 기간
-2021. 7. 1 -  8.  30
+
+2021년 7월 1일 ~ 8월 30일
 
 
 
-### 기술 스택
+### 🚩 기술 스택
 
-HTML5, CSS, React
+```null
+프론트엔드
+	HTML5
+    CSS3
+    React
 
-Spring Boot
+백엔드
+ 	Spring Boot
+	MariaDB
+```
 
-DB: 
