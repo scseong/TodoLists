@@ -1,9 +1,14 @@
-
+import Header from './component/layout/Header'
+import Main from './component/layout/Main'
+import SideBar from './component/layout/SideBar'
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      TEST
+    <div className="app">
+      <Header />
+      <SideBar />
+      <Main />
     </div>
   );
 }

@@ -1,0 +1,26 @@
+.app__sidabar {
+  background-color: var(--sidebar-color);
+  padding: 30px 25px;
+  border-right: 2px solid #eee;
+  color: var(--nav-color);
+  font-weight: 500;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.nav__item:hover {
+  background-color: #fff;
+  border-radius: 0.3em;
+  color: var(--interactive-color);
+  font-weight: 600;
+  transition: 0.2s all;
+}
+.nav__icon {
+  font-size: 1.5em;
+}
