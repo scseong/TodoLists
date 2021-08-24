@@ -7,8 +7,9 @@ import fetcher from '@utils/fetcher';
 import useSWR from 'swr';
 
 const LogIn = () => {
-  const { data, error, revalidate, mutate } = useSWR('http://localhost:8080/api/login', fetcher, {
+  const { data, error, revalidate, mutate } = useSWR('http://localhost:8080/api/users', fetcher, {
     dedupingInterval: 100000,
+    shouldRetryOnError: false,
   });
   const [logInError, setLogInError] = useState(false);
   const [email, onChangeEmail] = useInput('');
@@ -29,9 +30,9 @@ const LogIn = () => {
     [email, password],
   );
 
-  if (data === undefined) {
-    return <div>로딩중...</div>;
-  }
+  // if (data === undefined) {
+  //   return <div>로딩중...</div>;
+  // }
 
   if (data) {
     return <Redirect to="/workspace/channel"></Redirect>;
@@ -39,7 +40,7 @@ const LogIn = () => {
 
   return (
     <div id="container">
-      <Header>Sleact</Header>
+      <Header>TODOLIST</Header>
       <Form onSubmit={onSubmit}>
         <Label id="email-label">
           <span>이메일 주소</span>

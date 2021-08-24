@@ -4,7 +4,7 @@ import Workspace from '@layouts/Workspace';
 const Channel = () => {
   return (
     <Workspace>
-      <div>로그인 축하</div>
+      <div>TODOLIST</div>
     </Workspace>
   );
 };

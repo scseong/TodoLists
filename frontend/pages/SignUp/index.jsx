@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import fetcher from '@utils/fetcher';
 
 const SignUp = () => {
-  const { data, error, revalidate } = useSWR('http://localhost:8080/api/signup', fetcher);
+  const { data, error, revalidate } = useSWR('http://localhost:8080/api/users', fetcher);
   const [email, onChangeEmail, setEmail] = useInput('');
   const [nickname, onChangeNickname, setNickname] = useInput('');
   const [password, setPassword] = useState('');
@@ -59,9 +59,9 @@ const SignUp = () => {
     [email, nickname, password, passwordCheck, mismatchError],
   );
 
-  if (data === undefined) {
-    return <div>로딩중...</div>;
-  }
+  // if (data === undefined) {
+  //   return <div>로딩중...</div>;
+  // }
 
   if (data) {
     return <Redirect to="/workspace/channel"></Redirect>;
@@ -69,7 +69,7 @@ const SignUp = () => {
 
   return (
     <div id="container">
-      <Header>Sleact</Header>
+      <Header>TODOLIST</Header>
       <Form onSubmit={onSubmit}>
         <Label id="email-label">
           <span>이메일 주소</span>

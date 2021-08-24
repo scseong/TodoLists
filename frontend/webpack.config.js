@@ -60,7 +60,7 @@ const config = {
   },
   devServer: {
     historyApiFallback: true,
-    port: 3090,
+    port: 3000,
     publicPath: '/dist/',
     proxy: {
       '/api/': {
