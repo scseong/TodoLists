@@ -8,9 +8,9 @@ import fetcher from '@utils/fetcher';
 
 const SignUp = () => {
   const { data, error, revalidate } = useSWR('http://localhost:8080/api/users', fetcher);
-  const [email, onChangeEmail, setEmail] = useInput('');
-  const [nickname, onChangeNickname, setNickname] = useInput('');
-  const [password, setPassword] = useState('');
+  const [m_email, onChangeEmail, setEmail] = useInput('');
+  const [m_name, onChangeNickname, setNickname] = useInput('');
+  const [m_pwd, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [mismatchError, setMissmatchError] = useState(false);
   const [signUpError, setSignUpError] = useState('');
@@ -27,9 +27,9 @@ const SignUp = () => {
   const onChangePasswordCheck = useCallback(
     (e) => {
       setPasswordCheck(e.target.value);
-      setMissmatchError(e.target.value !== password);
+      setMissmatchError(e.target.value !== m_pwd);
     },
-    [password],
+    [m_pwd],
   );
 
   const onSubmit = useCallback(
@@ -41,9 +41,9 @@ const SignUp = () => {
         setSignUpError('');
         axios
           .post('/api/users', {
-            email,
-            nickname,
-            password,
+            m_email,
+            m_name,
+            m_pwd,
           })
           .then((response) => {
             console.log(response);
@@ -56,7 +56,7 @@ const SignUp = () => {
           .finally(() => {});
       }
     },
-    [email, nickname, password, passwordCheck, mismatchError],
+    [m_email, m_name, m_pwd, passwordCheck, mismatchError],
   );
 
   // if (data === undefined) {
@@ -74,19 +74,19 @@ const SignUp = () => {
         <Label id="email-label">
           <span>이메일 주소</span>
           <div>
-            <Input type="email" id="email" name="email" value={email} onChange={onChangeEmail} />
+            <Input type="email" id="email" name="email" value={m_email} onChange={onChangeEmail} />
           </div>
         </Label>
         <Label id="nickname-label">
           <span>닉네임</span>
           <div>
-            <Input type="text" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
+            <Input type="text" id="nickname" name="nickname" value={m_name} onChange={onChangeNickname} />
           </div>
         </Label>
         <Label id="password-label">
           <span>비밀번호</span>
           <div>
-            <Input type="password" id="password" name="password" value={password} onChange={onChangePassword} />
+            <Input type="password" id="password" name="password" value={m_pwd} onChange={onChangePassword} />
           </div>
         </Label>
         <Label id="password-check-label">
@@ -101,7 +101,7 @@ const SignUp = () => {
             />
           </div>
           {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
-          {!nickname && <Error>닉네임을 입력해주세요.</Error>}
+          {!m_name && <Error>닉네임을 입력해주세요.</Error>}
           {signUpError && <Error>{signUpError}</Error>}
           {signUpSuccess && <Success>회원가입되었습니다! 로그인해주세요.</Success>}
         </Label>

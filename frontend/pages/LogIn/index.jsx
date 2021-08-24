@@ -12,14 +12,14 @@ const LogIn = () => {
     shouldRetryOnError: false,
   });
   const [logInError, setLogInError] = useState(false);
-  const [email, onChangeEmail] = useInput('');
-  const [password, onChangePassword] = useInput('');
+  const [m_email, onChangeEmail] = useInput('');
+  const [m_pwd, onChangePassword] = useInput('');
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
       setLogInError(false);
       axios
-        .post('/api/users/login', { email, password }, { withCredentials: true })
+        .post('/api/users/login', { m_email, m_pwd }, { withCredentials: true })
         .then((response) => {
           mutate(response.data, false);
         })
@@ -27,7 +27,7 @@ const LogIn = () => {
           setLogInError(error.response?.data?.statusCode === 401);
         });
     },
-    [email, password],
+    [m_email, m_pwd],
   );
 
   // if (data === undefined) {
@@ -45,13 +45,13 @@ const LogIn = () => {
         <Label id="email-label">
           <span>이메일 주소</span>
           <div>
-            <Input type="email" id="email" name="email" value={email} onChange={onChangeEmail} />
+            <Input type="email" id="email" name="email" value={m_email} onChange={onChangeEmail} />
           </div>
         </Label>
         <Label id="password-label">
           <span>비밀번호</span>
           <div>
-            <Input type="password" id="password" name="password" value={password} onChange={onChangePassword} />
+            <Input type="password" id="password" name="password" value={m_pwd} onChange={onChangePassword} />
           </div>
           {logInError && <Error>이메일과 비밀번호 조합이 일치하지 않습니다.</Error>}
         </Label>
